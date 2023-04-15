@@ -7,7 +7,7 @@ name: pmd
 
 on:
   push:
-    branches: [ "main","SCRS-46-Create-a-method-that-allows-an-admin-user-to-view-the-names-of-all-the-students-enrolled-in-a-specific-course"]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   schedule:
