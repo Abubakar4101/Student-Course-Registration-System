@@ -1,4 +1,3 @@
-package crs;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -9,6 +8,7 @@ import java.util.Scanner;
 
 public class Student extends User implements StudentInterface, java.io.Serializable {
 	
+	private static final long serialVersionUID = 1394580731548949891L;
 	public static ArrayList<String> registeredCourses = new ArrayList<String>();
 	public String firstName;
 	public String lastName;
