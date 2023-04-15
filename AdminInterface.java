@@ -1,4 +1,3 @@
-package crs;
 
 public interface AdminInterface {
 	
