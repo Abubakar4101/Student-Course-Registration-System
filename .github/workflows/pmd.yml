@@ -3,8 +3,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: pmd
-
+name: PMD
 on:
   push:
     branches: [ "main" ]
@@ -32,7 +31,7 @@ jobs:
           distribution: 'temurin'
       - name: Run PMD
         id: pmd
-        uses: pmd/pmd-github-action@967a81f8b657c87f7c3e96b62301cb1a48efef29
+        uses: pmd/pmd-github-action@v1.4.0
         with:
           rulesets: 'rulesets/java/quickstart.xml'
           sourcePath: 'src/main/java'
