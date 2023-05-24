@@ -1,3 +1,19 @@
+/*
+ * This class, crsMain, serves as the main entry point for the course management system.
+ * It provides functionality for administrators and students to interact with the system.
+ * 
+ * The purpose of this class includes:
+ * - Loading course and student data from serialized files
+ * - Reading course information from a CSV file and populating the course list
+ * - Handling user login and authentication
+ * - Providing menu options and actions for administrators and students
+ * - Performing course management operations such as creating, deleting, and editing courses
+ * - Generating reports on course enrollment and student registration
+ * - Allowing students to register, withdraw, and view their enrolled courses
+ *
+ * The class utilizes other classes such as Admin, Student, and Serialization to implement the system's functionality.
+ * It also makes use of ArrayLists, file input/output, and serialization for data handling and persistence.
+ */
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -60,6 +76,13 @@ public class crsMain implements Serializable {
 	
 	
 	public static void LoginMain() throws IOException{
+		
+		// Check if the username and password are correct for login authentication.
+		// Provides options for the user to log in as an admin or a student.
+		// If the user is an admin, calls the adminSelection() method.
+		// If the user is a student, allows them to create a new username and password.
+		// After successful login, provides menu options for administrators and students.
+		
 		System.out.print("1. Admin\n" + "2. Student\n" + "3. Exit\n");
 		
 		Scanner input = new Scanner(System.in);
@@ -68,18 +91,19 @@ public class crsMain implements Serializable {
 		
 		Scanner input2 = new Scanner(System.in);
 		
-		//Check if username/password are correct
+    		// Check if username/password are correct for admin
 		if (choice == 1) {  
 			System.out.println("Username: ");
 			String username = input2.nextLine();
 			
 			System.out.println("Password: ");
 			String password = input2.nextLine();
-			
+
+			// If the entered username and password match admin credentials, go to admin selection
 			if (username.equals("Admin") && password.equals("Admin001")) {adminSelection();}
 			
 		}
-		
+		// If the choice is for a student
 		if (choice == 2) {
 			
 			Scanner firstTimeLog = new Scanner(System.in);
@@ -90,13 +114,14 @@ public class crsMain implements Serializable {
 			String lastName = firstTimeLog.nextLine();
 			
 			//Let the user create a new username and password themselves
-			//if (firstLog.equals("yes") || firstLog.equals("Yes")) {
+			//if (firstLog.equals("yes") || firstLog.equals("Yes"))
 				System.out.print("Username: ");
 				String newUsername = firstTimeLog.nextLine();
 
 				System.out.print("Password: ");
 				String newPassword = firstTimeLog.nextLine();
 
+				// Find the student object in the ArrayList to add username/password to the correct profile
 				for (int i = 0; i<crsData.students.size(); i++) {
 					Student studentIndex = crsData.students.get(i);
 					//Find student object in ArrayList to add username/password to correct profile
@@ -113,6 +138,7 @@ public class crsMain implements Serializable {
 //			}
 					
 		}
+		// If the choice is to exit the program
 		if (choice == 3) {
 			Serialization.studentSerialization();
 			Serialization.courseSerialization();
