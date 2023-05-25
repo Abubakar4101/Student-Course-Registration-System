@@ -1,3 +1,11 @@
+/**
+ * The Student class represents a student in the system. It stores student information
+ * such as first name, last name, username, and password. It provides methods to perform
+ * various operations related to students, such as viewing courses, registering for courses,
+ * and withdrawing from courses. The class also maintains a list of registered courses for
+ * each student. The Student class extends the User class and implements the StudentInterface
+ * and Serializable interfaces.
+ */
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -89,11 +97,15 @@ public class Student extends User implements StudentInterface, java.io.Serializa
 
 	//WORKS
 	public static String fullCourseID = null;
+	
+	//WORKS - Displays the course IDs of the courses that are not yet full.
 	public static void viewNotFullCourses() throws IOException {
 		//In ArrayList of courses, if Max# == enrolled# return course info
 		Course course = new Course();
+		// Iterates over the courseArrayList to check each course's enrollment status.
 		for (int i = 0; i<crsMain.courseArrayList.size(); i++) {
 			course = crsMain.courseArrayList.get(i);
+			// Checks if the current course has available spots for enrollment.
 			if (course.getEnrolledStudents() != course.getMaxStudents()) {
 				String courseID = course.getCourseID();
 				fullCourseID = courseID;
